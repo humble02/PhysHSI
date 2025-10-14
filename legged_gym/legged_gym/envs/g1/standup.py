@@ -324,8 +324,6 @@ class LeggedRobot(BaseTask):
         self.reset_buf |= torch.logical_or(torch.abs(self.roll)>0.5, torch.abs(self.pitch-0.25)>0.85)
         self.reset_buf |= self.time_out_buf
         self.reset_buf |= self.root_states[:, 2] < 0.3
-        # 速度太快 terminate
-        # self.reset_buf |= torch.logical_and(self.root_states[:, 9] > 1.5, self.robot2chair_dist_xyz < 0.5)
 
 
     def reset_idx(self, env_ids):
