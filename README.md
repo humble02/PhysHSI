@@ -1,36 +1,3 @@
-<h1 align="center"> PhysHSI: Towards a Real-World Generalizable and Natural Humanoid-Scene Interaction System </h1>
-
-<p align="center">
-  <a href='https://why618188.github.io/' target='_blank'>Huayi Wang*</a>,
-  <a href='https://zwt006.github.io/' target='_blank'>Wentao Zhang*</a>,
-  <a href='https://ingrid789.github.io/IngridYu/' target='_blank'>Runyi Yu*</a>,
-  <a href="https://taohuang13.github.io/">Tao Huang</a>,
-  <a href="https://renjunli99.github.io/">Junli Ren</a>,
-  <a href="https://trap-1.github.io/">Feiyu Jia</a>,
-  <a href="https://openreview.net/profile?id=%7EZiRui_Wang4">Zirui Wang</a>,
-  <br>
-  <a href="https://why618188.github.io/physhsi/">Xiaojie Niu</a>,
-  <a href="https://xiao-chen.tech/">Xiao Chen</a>,
-  <a href="https://jiahe-chen.cn/">Jiahe Chen</a>,
-  <a href="https://cqf.io/">Qifeng Chen<sup>&dagger;</sup></a>,
-  <a href="https://wangjingbo1219.github.io/">Jingbo Wang<sup>&dagger;</sup></a>,
-  <a href='https://oceanpang.github.io/' target='_blank'>Jiangmiao Pang<sup>&dagger;</sup></a>
-  <br>
-  *Equal Contributions&nbsp;&nbsp;&nbsp;&nbsp;<sup>&dagger;</sup>Corresponding Authors
-  <br>
-</p>
-
-<p align="center">
-  <a href="https://arxiv.org/abs/2510.11072"><img src="https://img.shields.io/badge/arXiv-2510.11072-brown" alt="arXiv"></a>
-  <a href="https://youtu.be/dTj6FjoQ5u0"><img src="https://img.shields.io/badge/Youtube-🎬-yellow" alt="YouTube"></a>
-  <a href="https://why618188.github.io/physhsi/"><img src="https://img.shields.io/badge/Website-%F0%9F%9A%80-green" alt="Website"></a>
-  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg" alt="License: CC BY-NC-SA 4.0"></a>
-</p>
-
-<p align="center">
-  <img src="teaser.png" alt="Project teaser" width="100%">
-</p>
-
 ## 🛠️ Installation
 
 1. Create a conda environment and install PyTorch:
@@ -164,3 +131,16 @@ If you find our work helpful, please cite:
 
 The PhysHSI code is licensed under the <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 International License</a> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>.
 Commercial use is not allowed without explicit authorization.
+
+
+export LD_LIBRARY_PATH=/home/yaobicheng/miniconda3/envs/physhsi/lib:$LD_LIBRARY_PATH
+
+export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+
+export PYTORCH_JIT=0
+
+export TORCH_CUDA_ARCH_LIST="8.0;8.6;8.9;9.0"
+
+rm -rf /home/pc/.cache/torch_extensions/
+
+python legged_gym/scripts_adam/play.py --task=carrybox_adam --play_dataset

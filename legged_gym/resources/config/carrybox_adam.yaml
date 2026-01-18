@@ -1,0 +1,35 @@
+motions:
+  loco:
+    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B1_checkpoint.pt
+      rsi_skipped_range: []
+      weight: 1.0
+    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B2_t2_checkpoint.pt
+      rsi_skipped_range: []
+      weight: 1.0
+    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B2_checkpoint.pt
+      rsi_skipped_range: []
+      weight: 1.0
+    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B3_checkpoint.pt
+      rsi_skipped_range: []
+      weight: 1.0
+    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B9_checkpoint.pt
+      rsi_skipped_range: []
+      weight: 1.0
+    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B10_checkpoint.pt
+      rsi_skipped_range: []
+      weight: 1.0
+    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B11_checkpoint.pt
+      rsi_skipped_range: []
+      weight: 1.0
+    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B12_checkpoint.pt
+      rsi_skipped_range: []
+      weight: 1.0
+    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B13_checkpoint.pt
+      rsi_skipped_range: []
+      weight: 1.0
+    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B14_checkpoint.pt
+      rsi_skipped_range: []
+      weight: 1.0
+    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B15_checkpoint.pt
+      rsi_skipped_range: []
+      weight: 1.0
