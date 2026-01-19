@@ -1,4 +1,31 @@
 motions:
+  pickUp:
+    - file: ../dataset/dataset_carrybox_adam/pickUp/pickup1.pt
+      rsi_skipped_range: []
+      weight: 4.0
+    - file: ../dataset/dataset_carrybox_adam/pickUp/pickup2.pt
+      rsi_skipped_range: []
+      weight: 4.0
+    - file: ../dataset/dataset_carrybox_adam/pickUp/pickup3.pt
+      rsi_skipped_range: []
+      weight: 4.0
+
+  putDown:
+    - file: ../dataset/dataset_carrybox_adam/putDown/putdown.pt
+      rsi_skipped_range: []
+      weight: 5.0
+
+  carryWith:
+    - file: ../dataset/dataset_carrybox_adam/carryWith/carrywith1.pt
+      rsi_skipped_range: []
+      weight: 5.0
+    - file: ../dataset/dataset_carrybox_adam/carryWith/carrywith2.pt
+      rsi_skipped_range: []
+      weight: 5.0
+    - file: ../dataset/dataset_carrybox_adam/carryWith/carrywith3.pt
+      rsi_skipped_range: []
+      weight: 5.0
+
   loco:
     - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B1_checkpoint.pt
       rsi_skipped_range: []
