@@ -169,7 +169,7 @@ class AdamCfg(LeggedRobotCfg):
             reset_mode = 'hybrid' # 'default', 'random', 'hybrid'
             hybrid_init_prob = 0.8  # prob of random, for hybrid mode
 
-            skill = ["loco"]#["loco", "pickUp", "carryWith", "putDown"]
+            skill = ["loco", "pickUp", "carryWith", "putDown"]
             skill_init_prob = [0.8, 0.2, 0.2, 0.0]
 
             box_termination = False
