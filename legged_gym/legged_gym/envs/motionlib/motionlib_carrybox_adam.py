@@ -109,12 +109,12 @@ class MotionLib:
         self.motion_box_pos_global = torch.zeros(self.tot_frames, 3, dtype=torch.float, device=self.device)
         self.motion_end_effector_pos = torch.zeros(self.tot_frames, len(self.end_effector_name), 3, dtype=torch.float, device=self.device)
         self.motion_base_z_bias = torch.zeros(self.tot_frames, 1, dtype=torch.float, device=self.device)
-        # self.contact_index = torch.zeros(self.num_motion['pickUp'], dtype=torch.long, device=self.device)
+        self.contact_index = torch.zeros(self.num_motion['pickUp'], dtype=torch.long, device=self.device)
 
         for skill in self.skills:
             for i, traj in enumerate(self.motion_data[skill]):
-                # if skill == 'pickUp':
-                #     self.contact_index[i] = traj["contact_index"]
+                if skill == 'pickUp':
+                    self.contact_index[i] = traj["contact_frames"]
 
                 start, end = self.motion_start_ids[skill][i], self.motion_end_ids[skill][i]
                 self.motion_base_height[start:end] = traj["base_height"].reshape(-1, 1).clone().detach()
@@ -229,13 +229,13 @@ class MotionLib:
         box_quat = torch.nn.functional.normalize(box_quat, dim=-1)
         box_quat = torch_utils.calc_heading_quat(box_quat)
 
-        # if skill == "pickUp":
-        #     is_set_platform = motion_times < self.contact_index[motion_ids]
-        #     platform_pos = self.motion_box_pos_global[start_ids+self.contact_index[motion_ids]]
-        #     platform_pos[:, 2:3] = platform_pos[:, 2:3] - self.motion_base_z_bias[start_ids+self.contact_index[motion_ids]] + 0.05
-        # else:
-        is_set_platform = torch.zeros_like(motion_times, dtype=torch.bool, device=self.device)
-        platform_pos = torch.zeros_like(box_pos, device=self.device)
+        if skill == "pickUp":
+            is_set_platform = motion_times < self.contact_index[motion_ids]
+            platform_pos = self.motion_box_pos_global[start_ids+self.contact_index[motion_ids]]
+            platform_pos[:, 2:3] = platform_pos[:, 2:3] - self.motion_base_z_bias[start_ids+self.contact_index[motion_ids]] + 0.05
+        else:
+            is_set_platform = torch.zeros_like(motion_times, dtype=torch.bool, device=self.device)
+            platform_pos = torch.zeros_like(box_pos, device=self.device)
         
         return box_pos, box_quat, is_set_platform, platform_pos
     

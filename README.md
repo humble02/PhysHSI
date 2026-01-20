@@ -144,3 +144,12 @@ export TORCH_CUDA_ARCH_LIST="8.0;8.6;8.9;9.0"
 rm -rf /home/pc/.cache/torch_extensions/
 
 python legged_gym/scripts_adam/play.py --task=carrybox_adam --play_dataset
+
+export CC=gcc-9
+export CXX=g++-9
+
+tmux new-session -s ybc
+
+tmux attach -t ybc
+
+tmux kill-session -t
