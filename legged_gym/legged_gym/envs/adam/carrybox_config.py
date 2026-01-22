@@ -196,7 +196,7 @@ class AdamCfg(LeggedRobotCfg):
         randomize_actuation_offset = use_random
         actuation_offset_range = [-0.05, 0.05]
         
-        randomize_motor_strength = use_random
+        randomize_motor_strength = False
         motor_strength_range = [0.9, 1.1]
 
         randomize_payload_mass = use_random
@@ -214,10 +214,10 @@ class AdamCfg(LeggedRobotCfg):
         randomize_restitution = use_random
         restitution_range = [0.0, 1.0]
         
-        randomize_kp = use_random
+        randomize_kp = False
         kp_range = [0.9, 1.1]
         
-        randomize_kd = use_random
+        randomize_kd = False
         kd_range = [0.9, 1.1]
         
         randomize_initial_joint_pos = use_random

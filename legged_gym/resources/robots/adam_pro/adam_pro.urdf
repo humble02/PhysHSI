@@ -18,10 +18,10 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="meshes_stl_0.25/pelvis.STL" />
-      </geometry>
+        <origin xyz="0.0 0.0 0" rpy="1.57 0 0" />
+        <geometry>
+            <cylinder length="0.1" radius="0.1" />
+        </geometry>
     </collision>
   </link>
   <link name="imu_link" />
@@ -68,12 +68,6 @@
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
       </material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="meshes_stl_0.25/hipRollLeft.STL" />
-      </geometry>
-    </collision>
   </link>
   <joint name="hipRoll_Left" type="revolute">
     <origin xyz="-0.0254999999999983 0.0690000000000026 0" rpy="0.610865238197473 0 0" />
@@ -97,12 +91,12 @@
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
       </material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="meshes_stl_0.25/thighLeft.STL" />
-      </geometry>
-    </collision>
+      <collision>
+          <origin xyz="0.0 -0.01 -0.13" rpy="-0.174533 0 0" />
+          <geometry>
+              <cylinder length="0.08" radius="0.06" />
+          </geometry>
+      </collision>
   </link>
   <joint name="hipYaw_Left" type="revolute">
     <origin xyz="0.0440000071360198 0 -0.0524999940193389" rpy="0 0 0" />
@@ -126,12 +120,12 @@
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
       </material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="meshes_stl_0.25/shinLeft.STL" />
-      </geometry>
-    </collision>
+      <collision>
+          <origin xyz="0.0 0.0 -0.17" rpy="0 0 0" />
+          <geometry>
+              <cylinder length="0.22" radius="0.04" />
+          </geometry>
+      </collision>
   </link>
   <joint name="kneePitch_Left" type="revolute">
     <origin xyz="0 -0.0354999999998497 -0.369000000000099" rpy="0 0 0" />
@@ -155,12 +149,6 @@
         <color rgba="1 1 1 1" />
       </material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="meshes_stl_0.25/anklePitchLeft.STL" />
-      </geometry>
-    </collision>
   </link>
   <joint name="anklePitch_Left" type="revolute">
     <origin xyz="0 0 -0.36999999999995" rpy="0 0 0" />
@@ -236,12 +224,6 @@
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
       </material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="meshes_stl_0.25/hipRollRight.STL" />
-      </geometry>
-    </collision>
   </link>
   <joint name="hipRoll_Right" type="revolute">
     <origin xyz="-0.0254999999999981 -0.0689999999999357 0" rpy="-0.610865238197555 0 0" />
@@ -266,10 +248,10 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="meshes_stl_0.25/thighRight.STL" />
-      </geometry>
+        <origin xyz="0.0 0.01 -0.13" rpy="0 0 0" />
+        <geometry>
+            <cylinder length="0.08" radius="0.06" />
+        </geometry>
     </collision>
   </link>
   <joint name="hipYaw_Right" type="revolute">
@@ -295,10 +277,10 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="meshes_stl_0.25/shinRight.STL" />
-      </geometry>
+        <origin xyz="0.0 0.0 -0.17" rpy="0 0 0" />
+        <geometry>
+            <cylinder length="0.22" radius="0.04" />
+        </geometry>
     </collision>
   </link>
   <joint name="kneePitch_Right" type="revolute">
@@ -323,12 +305,6 @@
         <color rgba="1 1 1 1" />
       </material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="meshes_stl_0.25/anklePitchRight.STL" />
-      </geometry>
-    </collision>
   </link>
   <joint name="anklePitch_Right" type="revolute">
     <origin xyz="0 0 -0.369999999999911" rpy="0 0 0" />
@@ -405,12 +381,6 @@
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
       </material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="meshes_stl_0.25/waistPitch_link.STL" />
-      </geometry>
-    </collision>
   </link>
   <joint name="waistPitch" type="revolute">
     <origin xyz="0 0 0.08" rpy="0 0 0" />
@@ -463,12 +433,6 @@
         <color rgba="1 1 1 1" />
       </material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="meshes_stl_0.25/shoulderPitchLeft.STL" />
-      </geometry>
-    </collision>
   </link>
   <joint name="shoulderPitch_Left" type="revolute">
     <origin xyz="0 0.165093970689425 0.259229560594865" rpy="0.349065850393456 0 0" />
@@ -493,10 +457,10 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="meshes_stl_0.25/shoulderRollLeft.STL" />
-      </geometry>
+        <origin xyz="-0.035 0 0" rpy="0 1.5708 0" />
+        <geometry>
+            <cylinder length="0.02" radius="0.035" />
+        </geometry>
     </collision>
   </link>
   <joint name="shoulderRoll_Left" type="revolute">
@@ -522,10 +486,10 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="meshes_stl_0.25/shoulderYawLeft.STL" />
-      </geometry>
+        <origin xyz="0 0 -0.06" rpy="0 0 0" />
+        <geometry>
+            <cylinder length="0.067" radius="0.0415" />
+        </geometry>
     </collision>
   </link>
   <joint name="shoulderYaw_Left" type="revolute">
@@ -660,12 +624,6 @@
         <color rgba="1 1 1 1" />
       </material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="meshes_stl_0.25/shoulderPitchRight.STL" />
-      </geometry>
-    </collision>
   </link>
   <joint name="shoulderPitch_Right" type="revolute">
     <origin xyz="0 -0.165093970689321 0.259229560595242" rpy="-0.349065850398898 0 0" />
@@ -690,10 +648,10 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="meshes_stl_0.25/shoulderRollRight.STL" />
-      </geometry>
+        <origin xyz="0 0 -0.06" rpy="0 0 0" />
+        <geometry>
+            <cylinder length="0.067" radius="0.0415" />
+        </geometry>
     </collision>
   </link>
   <joint name="shoulderRoll_Right" type="revolute">
@@ -718,12 +676,6 @@
         <color rgba="1 1 1 1" />
       </material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="meshes_stl_0.25/shoulderYawRight.STL" />
-      </geometry>
-    </collision>
   </link>
   <joint name="shoulderYaw_Right" type="revolute">
     <origin xyz="-0.0361999996389017 -0.0339999999996759 -0.0797000000498751" rpy="0 0 0" />

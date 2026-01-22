@@ -299,7 +299,7 @@ class LeggedRobot(BaseTask):
         self.reset_buf |= self.time_out_buf
         self.reset_buf |= self.rigid_body_states[:, self.head_index, 2] < 0.6
         self.reset_buf |= self.root_states[:, 2] < 0.2
-        self.reset_buf |= torch.logical_or(torch.abs(self.roll)>0.5, torch.abs(self.pitch)>1.1)
+        # self.reset_buf |= torch.logical_or(torch.abs(self.roll)>0.5, torch.abs(self.pitch)>1.1)
         self.reset_buf |= torch.norm(self.rigid_body_states[:, 2, 7:9], dim=-1) > 3.0
 
         self.reset_buf |= torch.any(self.rigid_body_states[:, self.hip_yaw_indices, 2] < 0.15, dim=1)
