@@ -27,36 +27,36 @@ motions:
       weight: 5.0
 
   loco:
-    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B1_checkpoint.pt
+    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B1.pt
       rsi_skipped_range: []
       weight: 1.0
-    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B2_t2_checkpoint.pt
+    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B2_t2.pt
       rsi_skipped_range: []
       weight: 1.0
-    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B2_checkpoint.pt
+    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B2.pt
       rsi_skipped_range: []
       weight: 1.0
-    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B3_checkpoint.pt
+    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B3.pt
       rsi_skipped_range: []
       weight: 1.0
-    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B9_checkpoint.pt
+    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B9.pt
       rsi_skipped_range: []
       weight: 1.0
-    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B10_checkpoint.pt
+    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B10.pt
       rsi_skipped_range: []
       weight: 1.0
-    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B11_checkpoint.pt
+    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B11.pt
       rsi_skipped_range: []
       weight: 1.0
-    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B12_checkpoint.pt
+    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B12.pt
       rsi_skipped_range: []
       weight: 1.0
-    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B13_checkpoint.pt
+    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B13.pt
       rsi_skipped_range: []
       weight: 1.0
-    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B14_checkpoint.pt
+    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B14.pt
       rsi_skipped_range: []
       weight: 1.0
-    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B15_checkpoint.pt
+    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B15.pt
       rsi_skipped_range: []
       weight: 1.0

@@ -150,6 +150,8 @@ class MotionLib:
 
                 self.motion_box_pos[start:end] = traj["box_pos_local"].clone().detach()
                 self.motion_box_pos_global[start:end] = self.motion_box_pos[start:end] + self.motion_base_pos[start:end]
+                if skill == "carryWith":
+                    print("11")
 
         self.motion_base_lin_vel = torch_utils.quat_rotate_inverse(self.motion_base_quat, self.motion_global_lin_vel)
         self.motion_base_ang_vel = torch_utils.quat_rotate_inverse(self.motion_base_quat, self.motion_global_ang_vel)

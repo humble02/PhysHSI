@@ -149,6 +149,13 @@ class MotionLib:
                     self.motion_end_effector_pos[start:end, k] = traj["link_position"][:, k].clone().detach()
 
                 self.motion_box_pos[start:end] = traj["box_pos_local"].clone().detach()
+                if skill == "carryWith":
+                    print("motion box pos:", self.motion_box_pos[0])
+                    print("motion end effector pos:", self.motion_end_effector_pos[0, 0, :])
+                    print("motion end effector pos:", self.motion_end_effector_pos[0, 1, :])
+                    print("motion end effector pos:", self.motion_end_effector_pos[0, 2, :])
+                    print("motion end effector pos:", self.motion_end_effector_pos[0, 3, :])
+                    print("motion end effector pos:", self.motion_end_effector_pos[0, 4, :])
                 self.motion_box_pos_global[start:end] = self.motion_box_pos[start:end] + self.motion_base_pos[start:end]
 
         self.motion_base_lin_vel = torch_utils.quat_rotate_inverse(self.motion_base_quat, self.motion_global_lin_vel)
