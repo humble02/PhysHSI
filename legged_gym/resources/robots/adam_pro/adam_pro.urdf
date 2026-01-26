@@ -543,12 +543,12 @@
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
       </material>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <mesh filename="meshes_stl_0.25/wristYawLeft.STL" />
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <joint name="wristYaw_Left" type="revolute">
     <origin xyz="-0.0250000000083053 0.028499999997574 -0.0728999999980683" rpy="0 0 0" />
@@ -572,12 +572,12 @@
         <color rgba="1 1 1 1" />
       </material>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <mesh filename="meshes_stl_0.25/wristPitchLeft.STL" />
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <joint name="wristPitch_Left" type="revolute">
     <origin xyz="0 0 -0.201699999999994" rpy="0 0 0" />
@@ -734,12 +734,12 @@
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
       </material>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <mesh filename="meshes_stl_0.25/wristYawRight.STL" />
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <joint name="wristYaw_Right" type="revolute">
     <origin xyz="-0.0249999999999065 -0.0285000000002922 -0.0728999999999894" rpy="0 0 0" />
@@ -763,12 +763,12 @@
         <color rgba="1 1 1 1" />
       </material>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <mesh filename="meshes_stl_0.25/wristPitchRight.STL" />
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <joint name="wristPitch_Right" type="revolute">
     <origin xyz="0 0 -0.201699999999861" rpy="0 0 0" />
