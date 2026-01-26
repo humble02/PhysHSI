@@ -601,6 +601,12 @@
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
       </material>
     </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <mesh filename="meshes_stl_0.25/wristRollLeft.STL" />
+        </geometry>
+    </collision>
   </link>
   <joint name="wristRoll_Left" type="revolute">
     <origin xyz="0 0 0" rpy="0 0 0" />
@@ -786,6 +792,12 @@
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
       </material>
     </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <mesh filename="meshes_stl_0.25/wristRollRight.STL" />
+        </geometry>
+    </collision>
   </link>
   <joint name="wristRoll_Right" type="revolute">
     <origin xyz="0 0 0" rpy="0 0 0" />
