@@ -11,10 +11,13 @@ motions:
       weight: 4.0
 
   putDown:
-    - file: ../dataset/dataset_carrybox_adam/putDown/putdown.pt
+    - file: ../dataset/dataset_carrybox_adam/putDown/putdown1.pt
       rsi_skipped_range: []
       weight: 5.0
-
+    - file: ../dataset/dataset_carrybox_adam/putDown/putdown2.pt
+      rsi_skipped_range: []
+      weight: 5.0
+      
   carryWith:
     - file: ../dataset/dataset_carrybox_adam/carryWith/carrywith1.pt
       rsi_skipped_range: []

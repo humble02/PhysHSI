@@ -116,7 +116,7 @@ class AdamCfg(LeggedRobotCfg):
     class asset(LeggedRobotCfg.asset):
         file = "{LEGGED_GYM_ROOT_DIR}/resources/robots/adam_pro/adam_pro.urdf"
         name = "adam_pro"
-        hand_pos_name = "wristRoll"
+        hand_pos_name = "palm_link"
         hand_colli_name = "wristRoll"
         foot_name = "toe"
         head_name = "neckPitch_link"
@@ -252,6 +252,9 @@ class AdamCfg(LeggedRobotCfg):
             relocation_task = 1.0
             standup_task = 0.2
 
+        base_height_target = 0.85
+        head_height_target = 1.45
+
         # walk
         robot2object_pos = 0.0
         robot2object_vel = 1.0
@@ -276,13 +279,14 @@ class AdamCfg(LeggedRobotCfg):
         stand_still = 1.0
         hand_free = 0.5
 
+        # thresholds and targets
         target_speed_loco = 0.85
         target_speed_carry = 0.85
         thresh_robot2object = 0.7
         thresh_robot2goal = 0.65
         thresh_object2goal = 0.05
         thresh_object2start = 0.5
-        target_box_height = 0.72
+        target_box_height = 1.1#0.72
 
     class normalization:
         class obs_scales:

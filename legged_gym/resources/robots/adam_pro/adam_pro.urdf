@@ -615,6 +615,19 @@
     <axis xyz="1 0 0" />
     <limit lower="-0.96" upper="0.96" effort="6.4" velocity="5" />
   </joint>
+  <link name="left_palm_link">
+    <!-- <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.01"/>
+      </geometry>
+    </visual> -->
+  </link>
+  <joint name="left_palm_joint" type="fixed" dont_collapse="true">
+    <origin xyz="0.0 -0.0 -0.07" rpy="0 0 0"/>
+    <parent link="wristRollLeft"/>
+    <child link="left_palm_link"/>
+  </joint>
   <link name="shoulderPitchRight">
     <inertial>
       <origin xyz="0.00536737 -0.02693968 0.00010693" rpy="0 0 0" />
@@ -805,6 +818,19 @@
     <child link="wristRollRight" />
     <axis xyz="1 0 0" />
     <limit lower="-0.96" upper="0.96" effort="6.4" velocity="5" />
+  </joint>
+  <link name="right_palm_link">
+    <!-- <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.01"/>
+      </geometry>
+    </visual> -->
+  </link>
+  <joint name="right_palm_joint" type="fixed" dont_collapse="true">
+    <origin xyz="0.0 -0.0 -0.07" rpy="0 0 0"/>
+    <parent link="wristRollRight"/>
+    <child link="right_palm_link"/>
   </joint>
   <link name="neckYaw_link">
     <inertial>

@@ -251,6 +251,9 @@ class AdamCfg(LeggedRobotCfg):
             relocation_task = 1.0
             standup_task = 0.2
 
+        base_height_target = 0.85
+        head_height_target = 1.45
+
         # walk
         robot2object_pos = 0.0
         robot2object_vel = 1.0
@@ -281,7 +284,7 @@ class AdamCfg(LeggedRobotCfg):
         thresh_robot2goal = 0.65
         thresh_object2goal = 0.05
         thresh_object2start = 0.5
-        target_box_height = 0.72
+        target_box_height = 1.1
 
     class normalization:
         class obs_scales:
