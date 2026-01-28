@@ -1994,9 +1994,12 @@ class LeggedRobot(BaseTask):
         box_carryup_reward = torch.exp(-3 * torch.clamp(self.cfg.rewards.target_box_height - self.box_states[:, 2], min=0))
         box_carryup_reward[self.box_states[:, 2] > self.cfg.rewards.target_box_height] = 1.0
         box_carryup_reward[self.object2goal_dist_xy < 0.6] = 1.0
-        
+
+        hand_contact_force = torch.norm(self.contact_forces[:, self.hand_colli_indices], dim=-1)
+        hand_contact_reward = torch.tanh(hand_contact_force.mean(dim=1))
         carryup_reward = (self.cfg.rewards.hand_pos * hand2object_position_reward +
-                          self.cfg.rewards.box_height * box_carryup_reward)
+                          self.cfg.rewards.box_height * box_carryup_reward +
+                          self.cfg.rewards.hand_contact * hand_contact_reward)
         
         carryup_reward[self.robot2object_dist > self.cfg.rewards.thresh_robot2object] = 0.
         carryup_reward[self.object2goal_dist_xyz < self.cfg.rewards.thresh_object2goal] = self.cfg.rewards.hand_pos + self.cfg.rewards.box_height

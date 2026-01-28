@@ -68,6 +68,7 @@ legged_gym/legged_gym/scripts/wandb
 
 isaacgym
 
+issues.md 
 # other
 *.egg-info
 __pycache__

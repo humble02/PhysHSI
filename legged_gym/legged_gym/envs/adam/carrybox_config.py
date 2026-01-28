@@ -262,7 +262,7 @@ class AdamCfg(LeggedRobotCfg):
 
         # carryup
         hand_pos = 0.7
-        hand_contact = 0.0
+        hand_contact = 0.5
         box_height = 2.0
 
         # relocation
