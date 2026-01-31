@@ -1988,15 +1988,23 @@ class LeggedRobot(BaseTask):
     
     def _reward_carryup_task(self):
         hand_pos = self.rigid_body_states[:, self.hand_pos_indices, :3]
-        hand2object_err = torch.sum((hand_pos.mean(dim=1) - self.box_states[:, :3]) ** 2, dim=-1)
+        hand2object_err = torch.sum((hand_pos.mean(dim=1) - self.box_states[:, :3]) ** 2, dim=-1) # 手的中心点到物体中心点的距离
         hand2object_position_reward = torch.exp(-3 * hand2object_err)
         
         box_carryup_reward = torch.exp(-3 * torch.clamp(self.cfg.rewards.target_box_height - self.box_states[:, 2], min=0))
-        box_carryup_reward[self.box_states[:, 2] > self.cfg.rewards.target_box_height] = 1.0
-        box_carryup_reward[self.object2goal_dist_xy < 0.6] = 1.0
+        box_carryup_reward[self.box_states[:, 2] > self.cfg.rewards.target_box_height] = 1.0 #相当于抬起来了
+        box_carryup_reward[self.object2goal_dist_xy < 0.6] = 1.0 #接近目标位置了也算抬起来了
         
+        hand_contact_force  = torch.norm(self.contact_forces[:, self.hand_colli_indices], dim=-1)
+        hand_contact_reward = torch.tanh(hand_contact_force.mean(dim=1))
+
+        box_contact_force_xy  = torch.norm(self.contact_forces[:, :2], dim=-1)
+        box_contact_reward = torch.tanh(box_contact_force_xy.mean(dim=1))
+
         carryup_reward = (self.cfg.rewards.hand_pos * hand2object_position_reward +
-                          self.cfg.rewards.box_height * box_carryup_reward)
+                          self.cfg.rewards.box_height * box_carryup_reward + 
+                          self.cfg.rewards.hand_contact * hand_contact_reward +
+                          self.cfg.rewards.box_contact_xy * box_contact_reward)
         
         carryup_reward[self.robot2object_dist > self.cfg.rewards.thresh_robot2object] = 0.
         carryup_reward[self.object2goal_dist_xyz < self.cfg.rewards.thresh_object2goal] = self.cfg.rewards.hand_pos + self.cfg.rewards.box_height
@@ -2045,7 +2053,7 @@ class LeggedRobot(BaseTask):
         
         return relocation_reward
     
-    def _reward_standup_task(self):
+    def _reward_standup_task(self): # 放下物体后站立奖励
         base_height = self.root_states[:, 2].clone()
         base_height_reward = torch.exp(-2 * torch.abs(base_height - self.cfg.rewards.base_height_target))
         base_height_reward[base_height > self.cfg.rewards.base_height_target] = 1.0
