@@ -153,7 +153,7 @@ class AdamCfg(LeggedRobotCfg):
         thickness = 0.01
 
         class box:
-            base_size = [0.4, 0.4, 0.25]#[0.3, 0.3, 0.25]
+            base_size = [0.35, 0.35, 0.3]#[0.3, 0.3, 0.25]
             use_random = True
 
             random_size = use_random
@@ -265,6 +265,7 @@ class AdamCfg(LeggedRobotCfg):
         hand_contact = 0.0
         box_height = 2.0
         box_contact_xy = 1.0
+        dual_hand_pos = 1.0
 
         # relocation
         relocation_heading = 0.5
@@ -315,7 +316,7 @@ class AdamCfg(LeggedRobotCfg):
         min_time = 0.1 # [s] 这玩意儿干嘛用的，没看懂666
 
     class amp:
-        amp_coef = 0.25#0.25 # 这风格奖励系数可能还得调调
+        amp_coef = 0.15#0.25 # 这风格奖励系数可能还得调调
         num_one_step_obs = 1 + 31 + 5 * 3 + 3 + 6 + 6
         window_length = 10
         num_obs = num_one_step_obs * window_length

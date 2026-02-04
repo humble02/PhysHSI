@@ -1989,6 +1989,13 @@ class LeggedRobot(BaseTask):
     
     def _reward_carryup_task(self):
         hand_pos = self.rigid_body_states[:, self.hand_pos_indices, :3]
+
+        # 双手各自靠近箱子的引导奖励
+        box_pos_expanded = self.box_states[:, :3].unsqueeze(1) 
+        dist_each_hand = torch.norm(hand_pos - box_pos_expanded, dim=-1) # [num_envs, 2]
+        dual_hand_err = torch.mean(dist_each_hand, dim=1) 
+        dual_hand_proximity_reward = torch.exp(-5.0 * dual_hand_err)
+
         hand2object_err = torch.sum((hand_pos.mean(dim=1) - self.box_states[:, :3]) ** 2, dim=-1) # 手的中心点到物体中心点的距离
         hand2object_position_reward = torch.exp(-3 * hand2object_err)
         
@@ -2005,7 +2012,8 @@ class LeggedRobot(BaseTask):
         carryup_reward = (self.cfg.rewards.hand_pos * hand2object_position_reward +
                           self.cfg.rewards.box_height * box_carryup_reward + 
                           self.cfg.rewards.hand_contact * hand_contact_reward +
-                          self.cfg.rewards.box_contact_xy * box_contact_reward)
+                          self.cfg.rewards.box_contact_xy * box_contact_reward +
+                          self.cfg.rewards.dual_hand_pos * dual_hand_proximity_reward)
         
         carryup_reward[self.robot2object_dist > self.cfg.rewards.thresh_robot2object] = 0.
         carryup_reward[self.object2goal_dist_xyz < self.cfg.rewards.thresh_object2goal] = self.cfg.rewards.hand_pos + self.cfg.rewards.box_height
