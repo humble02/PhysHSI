@@ -904,5 +904,10 @@
     <parent link="neckPitch_link"/>
     <child link="right_zed_link"/>
   </joint>
-
+  <link name="camera_link"></link>
+  <joint name="camera_joint" type="fixed">
+    <origin xyz="0.096 -0.02 0.0407" rpy="0 0 0"/>
+    <parent link="neckPitch_link"/>
+    <child link="camera_link"/>
+  </joint>
 </robot>

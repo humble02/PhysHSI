@@ -120,7 +120,7 @@ class AdamCfg(LeggedRobotCfg):
         hand_colli_name = "wristRoll"
         foot_name = "toe"
         head_name = "neckPitch_link"
-        camera_name = "left_zed_link"
+        camera_name = "camera_link"
         left_foot_name = "toeLeft"
         right_foot_name = "toeRight"
         penalize_contacts_on = ["hip", "knee", "torso", "shoulder", "pelvis"]
@@ -153,7 +153,7 @@ class AdamCfg(LeggedRobotCfg):
         thickness = 0.01
 
         class box:
-            base_size = [0.3, 0.3, 0.25]
+            base_size = [0.4, 0.4, 0.25]#[0.3, 0.3, 0.25]
             use_random = True
 
             random_size = use_random
@@ -193,42 +193,42 @@ class AdamCfg(LeggedRobotCfg):
     class domain_rand(LeggedRobotCfg.domain_rand):
         use_random = True
         
-        randomize_actuation_offset = use_random
+        randomize_actuation_offset = use_random #无
         actuation_offset_range = [-0.05, 0.05]
         
-        randomize_motor_strength = False
+        randomize_motor_strength = False #无
         motor_strength_range = [0.9, 1.1]
 
-        randomize_payload_mass = use_random
+        randomize_payload_mass = use_random #无
         payload_mass_range = [-2, 5]
 
-        randomize_com_displacement = use_random
+        randomize_com_displacement = use_random #有
         com_displacement_range = [-0.1, 0.1]
 
-        randomize_link_mass = use_random
+        randomize_link_mass = use_random #有
         link_mass_range = [0.8, 1.2]
         
-        randomize_friction = use_random
+        randomize_friction = use_random #有
         friction_range = [0.1, 1.5]
         
-        randomize_restitution = use_random
+        randomize_restitution = use_random #有
         restitution_range = [0.0, 1.0]
         
-        randomize_kp = False
+        randomize_kp = False #有
         kp_range = [0.9, 1.1]
         
-        randomize_kd = False
+        randomize_kd = False #有
         kd_range = [0.9, 1.1]
         
-        randomize_initial_joint_pos = use_random
+        randomize_initial_joint_pos = use_random #无
         initial_joint_pos_scale = [1.0, 1.0]
         initial_joint_pos_offset = [-0.1, 0.1]
 
-        disturbance = use_random
+        disturbance = use_random #无
         disturbance_interval = 8
         disturbance_range = [-50, 50]
 
-        delay = use_random
+        delay = use_random #无
         max_delay_timesteps = 5
 
         push_robots = False
@@ -315,7 +315,7 @@ class AdamCfg(LeggedRobotCfg):
         min_time = 0.1 # [s] 这玩意儿干嘛用的，没看懂666
 
     class amp:
-        amp_coef = 0.25 # 这风格奖励系数可能还得调调
+        amp_coef = 0.25#0.25 # 这风格奖励系数可能还得调调
         num_one_step_obs = 1 + 31 + 5 * 3 + 3 + 6 + 6
         window_length = 10
         num_obs = num_one_step_obs * window_length

@@ -10,56 +10,68 @@ motions:
       rsi_skipped_range: []
       weight: 4.0
 
-  putDown:
-    - file: ../dataset/dataset_carrybox_adam/putDown/putdown1.pt
-      rsi_skipped_range: []
-      weight: 5.0
-    - file: ../dataset/dataset_carrybox_adam/putDown/putdown2.pt
-      rsi_skipped_range: []
-      weight: 5.0
+  # putDown:
+  #   - file: ../dataset/dataset_carrybox_adam/putDown/putdown1.pt
+  #     rsi_skipped_range: []
+  #     weight: 5.0
+  #   - file: ../dataset/dataset_carrybox_adam/putDown/putdown2.pt
+  #     rsi_skipped_range: []
+  #     weight: 5.0
       
   carryWith:
-    - file: ../dataset/dataset_carrybox_adam/carryWith/carrywith1.pt
+    - file: ../dataset/dataset_carrybox_adam/carryWith/pull1.pt
       rsi_skipped_range: []
       weight: 5.0
-    - file: ../dataset/dataset_carrybox_adam/carryWith/carrywith2.pt
+    - file: ../dataset/dataset_carrybox_adam/carryWith/pull2.pt
       rsi_skipped_range: []
       weight: 5.0
-    - file: ../dataset/dataset_carrybox_adam/carryWith/carrywith3.pt
+    - file: ../dataset/dataset_carrybox_adam/carryWith/push1.pt
       rsi_skipped_range: []
       weight: 5.0
+    - file: ../dataset/dataset_carrybox_adam/carryWith/push2.pt
+      rsi_skipped_range: []
+      weight: 5.0
+    # - file: ../dataset/dataset_carrybox_adam/carryWith/carrywith1.pt
+    #   rsi_skipped_range: []
+    #   weight: 5.0
+    # - file: ../dataset/dataset_carrybox_adam/carryWith/carrywith2.pt
+    #   rsi_skipped_range: []
+    #   weight: 5.0
+    # - file: ../dataset/dataset_carrybox_adam/carryWith/carrywith3.pt
+    #   rsi_skipped_range: []
+    #   weight: 5.0
 
-  loco:
-    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B1.pt
-      rsi_skipped_range: []
-      weight: 1.0
-    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B2_t2.pt
-      rsi_skipped_range: []
-      weight: 1.0
-    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B2.pt
-      rsi_skipped_range: []
-      weight: 1.0
-    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B3.pt
-      rsi_skipped_range: []
-      weight: 1.0
-    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B9.pt
-      rsi_skipped_range: []
-      weight: 1.0
-    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B10.pt
-      rsi_skipped_range: []
-      weight: 1.0
-    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B11.pt
-      rsi_skipped_range: []
-      weight: 1.0
-    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B12.pt
-      rsi_skipped_range: []
-      weight: 1.0
-    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B13.pt
-      rsi_skipped_range: []
-      weight: 1.0
-    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B14.pt
-      rsi_skipped_range: []
-      weight: 1.0
-    - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B15.pt
-      rsi_skipped_range: []
-      weight: 1.0
+  # loco:
+  #   - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B1.pt
+  #     rsi_skipped_range: []
+  #     weight: 1.0
+  #   - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B2_t2.pt
+  #     rsi_skipped_range: []
+  #     weight: 1.0
+  #   - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B2.pt
+  #     rsi_skipped_range: []
+  #     weight: 1.0
+  #   - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B3.pt
+  #     rsi_skipped_range: []
+  #     weight: 1.0
+  #   - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B9.pt
+  #     rsi_skipped_range: []
+  #     weight: 1.0
+  #   - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B10.pt
+  #     rsi_skipped_range: []
+  #     weight: 1.0
+  #   - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B11.pt
+  #     rsi_skipped_range: []
+  #     weight: 1.0
+  #   - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B12.pt
+  #     rsi_skipped_range: []
+  #     weight: 1.0
+  #   - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B13.pt
+  #     rsi_skipped_range: []
+  #     weight: 1.0
+  #   - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B14.pt
+  #     rsi_skipped_range: []
+  #     weight: 1.0
+  #   - file: ../dataset/dataset_carrybox_adam/loco_direction/pnd_B15.pt
+  #     rsi_skipped_range: []
+  #     weight: 1.0

@@ -109,8 +109,9 @@ class LeggedRobot(BaseTask):
             if self.device == 'cpu':
                 self.gym.fetch_results(self.sim, True)
             self.gym.refresh_dof_state_tensor(self.sim)
+        #print("leftknee torques:",self.torques[0,3],"rightknee torques:",self.torques[0,9])
         termination_ids, termination_priveleged_obs, amp_obs_buf = self.post_physics_step()
-        
+        # print("head pos:", self.rigid_body_states[0, self.head_index, 2])
         # return clipped obs, clipped states (None), rewards, dones and infos
         clip_obs = self.cfg.normalization.clip_observations
         self.obs_buf = torch.clip(self.obs_buf, -clip_obs, clip_obs)
@@ -1352,7 +1353,7 @@ class LeggedRobot(BaseTask):
             y_scale_linespace = torch.arange(self.box_cfg.scale_range_y[0], self.box_cfg.scale_range_y[1] + self.box_cfg.scale_sample_interval, self.box_cfg.scale_sample_interval, device=self.device)
             z_scale_linespace = torch.arange(self.box_cfg.scale_range_z[0], self.box_cfg.scale_range_z[1] + self.box_cfg.scale_sample_interval, self.box_cfg.scale_sample_interval, device=self.device)
             num_scales = x_scale_linespace.shape[0] * y_scale_linespace.shape[0] * z_scale_linespace.shape[0]
-            scale_pool = torch.cartesian_prod(x_scale_linespace, y_scale_linespace, z_scale_linespace)
+            scale_pool = torch.cartesian_prod(x_scale_linespace, y_scale_linespace, z_scale_linespace) #相当于生成一个三维的grid，然后把所有点的坐标拿出来组成一个大的tensor，每个点的坐标就是一个scale
 
             if self.num_envs >= num_scales:
                 sampled_scale_id = torch.multinomial(torch.ones(num_scales) * (1.0 / num_scales), num_samples=(self.num_envs - num_scales), replacement=True)
