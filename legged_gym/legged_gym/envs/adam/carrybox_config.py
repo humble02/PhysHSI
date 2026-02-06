@@ -75,7 +75,7 @@ class AdamCfg(LeggedRobotCfg):
                      'shoulderRoll': 20,
                      'shoulderYaw': 15,
                      "elbow": 15,
-                     "wrist": 15,
+                     "wrist": 5,
                      "neck": 15,
                      }  # [N*m/rad]
         damping = {  'hipPitch': 6.1,
@@ -91,7 +91,7 @@ class AdamCfg(LeggedRobotCfg):
                      'shoulderRoll': 3.0,
                      'shoulderYaw': 0.8,
                      "elbow": 0.8,
-                     "wrist": 0.8,
+                     "wrist": 0.2,
                      "neck": 0.8,
                      }  # [N*m/rad]  # [N*m*s/rad]
         # action scale: target angle = actionScale * action + defaultAngle
@@ -153,13 +153,13 @@ class AdamCfg(LeggedRobotCfg):
         thickness = 0.01
 
         class box:
-            base_size = [0.35, 0.35, 0.3]#[0.3, 0.3, 0.25]
+            base_size = [0.5, 0.5, 0.5]#[0.3, 0.3, 0.25]
             use_random = True
 
             random_size = use_random
-            scale_range_x = [0.7, 1.3]
-            scale_range_y = [0.7, 1.3]
-            scale_range_z = [0.6, 1.4]
+            scale_range_x = [0.7, 0.8]#[0.7, 1.3]
+            scale_range_y = [0.7, 0.8]#[0.7, 1.3]
+            scale_range_z = [0.7, 0.8]#[0.6, 1.4]
             scale_sample_interval = 0.1
 
             random_density = use_random
@@ -265,7 +265,7 @@ class AdamCfg(LeggedRobotCfg):
         hand_contact = 0.0
         box_height = 2.0
         box_contact_xy = 1.0
-        dual_hand_pos = 1.0
+        dual_hand_pos = 0.0
 
         # relocation
         relocation_heading = 0.5
@@ -316,7 +316,7 @@ class AdamCfg(LeggedRobotCfg):
         min_time = 0.1 # [s] 这玩意儿干嘛用的，没看懂666
 
     class amp:
-        amp_coef = 0.15#0.25 # 这风格奖励系数可能还得调调
+        amp_coef = 0.25#0.25 # 这风格奖励系数可能还得调调
         num_one_step_obs = 1 + 31 + 5 * 3 + 3 + 6 + 6
         window_length = 10
         num_obs = num_one_step_obs * window_length
