@@ -261,11 +261,11 @@ class AdamCfg(LeggedRobotCfg):
         start_heading = 0.5
 
         # carryup
-        hand_pos = 0.7
+        hand_pos = 1.5#0.7
         hand_contact = 0.0
-        box_height = 2.0
+        box_height = 4#2.0
         box_contact_xy = 1.0
-        dual_hand_pos = 0.0
+        dual_hand_pos = 0.5
 
         # relocation
         relocation_heading = 0.5
@@ -316,7 +316,7 @@ class AdamCfg(LeggedRobotCfg):
         min_time = 0.1 # [s] 这玩意儿干嘛用的，没看懂666
 
     class amp:
-        amp_coef = 0.25#0.25 # 这风格奖励系数可能还得调调
+        amp_coef = 0.05#0.25 # 这风格奖励系数可能还得调调
         num_one_step_obs = 1 + 31 + 5 * 3 + 3 + 6 + 6
         window_length = 10
         num_obs = num_one_step_obs * window_length
