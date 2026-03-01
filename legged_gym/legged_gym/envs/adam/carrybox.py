@@ -109,10 +109,7 @@ class LeggedRobot(BaseTask):
             if self.device == 'cpu':
                 self.gym.fetch_results(self.sim, True)
             self.gym.refresh_dof_state_tensor(self.sim)
-        #print("leftknee torques:",self.torques[0,3],"rightknee torques:",self.torques[0,9])
         termination_ids, termination_priveleged_obs, amp_obs_buf = self.post_physics_step()
-        # print("head pos:", self.rigid_body_states[0, self.head_index, 2])
-        # return clipped obs, clipped states (None), rewards, dones and infos
         clip_obs = self.cfg.normalization.clip_observations
         self.obs_buf = torch.clip(self.obs_buf, -clip_obs, clip_obs)
         if self.privileged_obs_buf is not None:
@@ -1988,6 +1985,19 @@ class LeggedRobot(BaseTask):
         return walk_reward
     
     def _reward_carryup_task(self):
+        """
+        _reward_carryup_task 的 Docstring
+        
+        这个函数计算了机器人在搬运物体过程中，抬起物体的奖励。它考虑了以下几个方面：
+        1. 双手靠近箱子的奖励：计算双手与箱子之间的距离
+        2. 手到物体中心的距离奖励：计算手的中心点与物体中心点之间的距离
+        3. 抬起物体的奖励：根据箱子当前的高度与目标高度之间的关系计算奖励
+        4. 手与物体接触的奖励：根据手部接触力的大小计算奖励
+        5. 物体水平轴向接触的奖励：根据物体与地面接触力的大小计算奖励
+
+        奖励计算条件：
+        - 只有当机器人与物体之间的距离超过阈值时，才会计算抬起奖励，否则抬起奖励为 0；当物体接近目标位置时也认为抬起来了，奖励为满分。
+        """
         hand_pos = self.rigid_body_states[:, self.hand_pos_indices, :3]
 
         # 双手各自靠近箱子的引导奖励
@@ -2006,20 +2016,36 @@ class LeggedRobot(BaseTask):
         hand_contact_force  = torch.norm(self.contact_forces[:, self.hand_colli_indices], dim=-1)
         hand_contact_reward = torch.tanh(hand_contact_force.mean(dim=1))
 
-        box_contact_force_xy  = torch.norm(self.contact_forces[:, :2], dim=-1)
-        box_contact_reward = torch.tanh(box_contact_force_xy.mean(dim=1))
+        box_contact_force_xy  = torch.norm(self.contact_forces[:, 2, :2], dim=-1)
+        box_contact_reward = torch.tanh(box_contact_force_xy)
 
+        box_contact_force_z  = torch.abs(self.contact_forces[:, 2, 2])
+        box_contact_reward_z = torch.exp(-3 * box_contact_force_z)
         carryup_reward = (self.cfg.rewards.hand_pos * hand2object_position_reward +
                           self.cfg.rewards.box_height * box_carryup_reward + 
                           self.cfg.rewards.hand_contact * hand_contact_reward +
                           self.cfg.rewards.box_contact_xy * box_contact_reward +
+                          self.cfg.rewards.box_contact_z * box_contact_reward_z +
                           self.cfg.rewards.dual_hand_pos * dual_hand_proximity_reward)
         
         carryup_reward[self.robot2object_dist > self.cfg.rewards.thresh_robot2object] = 0.
-        carryup_reward[self.object2goal_dist_xyz < self.cfg.rewards.thresh_object2goal] = self.cfg.rewards.hand_pos + self.cfg.rewards.box_height
+        carryup_reward[self.object2goal_dist_xyz < self.cfg.rewards.thresh_object2goal] = self.cfg.rewards.hand_pos + self.cfg.rewards.box_height + self.cfg.rewards.hand_contact + self.cfg.rewards.box_contact_xy + self.cfg.rewards.dual_hand_pos
         return carryup_reward
 
     def _reward_relocation_task(self):
+        """
+        _reward_relocation_task 的 Docstring
+        
+        这个函数计算了机器人在搬运物体过程中，朝向目标位置的奖励。它考虑了以下几个方面：
+        1. 机器人当前朝向与目标位置的朝向之间的误差
+        2. 机器人当前的角速度与期望的角速度之间的误差，期望角速度来自朝向误差
+        3. 机器人与目标位置之间的距离误差
+        4. 机器人朝向目标位置的速度，实际速度是线速度在距离方向上的分量，期望速度是一个常数
+        5. 物体与目标位置在 z 轴上的距离
+
+        奖励计算条件：
+        - 只有当物体被抬起来了（箱子底部离平台高度超过 0.05）或者物体与起始位置的距离超过阈值时，才会计算搬运奖励，否则搬运奖励为 0。
+        """
         forward = quat_apply(self.base_quat, self.forward_vec)
         heading = torch.atan2(forward[:, 1], forward[:, 0])
         target_heading = torch.atan2(self.goal_pos[:, 1] - self.root_states[:, 1], self.goal_pos[:, 0] - self.root_states[:, 0])
