@@ -114,7 +114,7 @@ class MotionLib:
         for skill in self.skills:
             for i, traj in enumerate(self.motion_data[skill]):
                 if skill == 'pickUp':
-                    self.contact_index[i] = traj["contact_index"]
+                    self.contact_index[i] = traj["contact_frames"]
 
                 start, end = self.motion_start_ids[skill][i], self.motion_end_ids[skill][i]
                 self.motion_base_height[start:end] = traj["base_height"].reshape(-1, 1).clone().detach()
@@ -149,13 +149,6 @@ class MotionLib:
                     self.motion_end_effector_pos[start:end, k] = traj["link_position"][:, k].clone().detach()
 
                 self.motion_box_pos[start:end] = traj["box_pos_local"].clone().detach()
-                if skill == "carryWith":
-                    print("motion box pos:", self.motion_box_pos[0])
-                    print("motion end effector pos:", self.motion_end_effector_pos[0, 0, :])
-                    print("motion end effector pos:", self.motion_end_effector_pos[0, 1, :])
-                    print("motion end effector pos:", self.motion_end_effector_pos[0, 2, :])
-                    print("motion end effector pos:", self.motion_end_effector_pos[0, 3, :])
-                    print("motion end effector pos:", self.motion_end_effector_pos[0, 4, :])
                 self.motion_box_pos_global[start:end] = self.motion_box_pos[start:end] + self.motion_base_pos[start:end]
 
         self.motion_base_lin_vel = torch_utils.quat_rotate_inverse(self.motion_base_quat, self.motion_global_lin_vel)
