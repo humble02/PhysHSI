@@ -114,7 +114,7 @@ class MotionLib:
         for skill in self.skills:
             for i, traj in enumerate(self.motion_data[skill]):
                 if skill == 'pickUp':
-                    self.contact_index[i] = traj["contact_frames"]
+                    self.contact_index[i] = traj["contact_index"]
 
                 start, end = self.motion_start_ids[skill][i], self.motion_end_ids[skill][i]
                 self.motion_base_height[start:end] = traj["base_height"].reshape(-1, 1).clone().detach()

@@ -123,7 +123,7 @@ class MotionLib:
 
                 self.motion_base_z_bias[start:end] = self.motion_base_pos[start:end, 2:3] - self.motion_base_height[start:end]
 
-                self.motion_global_lin_vel[start:end-1] = (self.motion_base_pos[start+1:end] - self.motion_base_pos[start:end-1]) * self.fps
+                self.motion_global_lin_vel[start:end-1] = (self.motion_base_pos[start+1:end] - self.motion_base_pos[start:end-1]) * self.fps 
                 self.motion_global_lin_vel[end-1:end] = self.motion_global_lin_vel[end-2:end-1]
 
                 root_rot = traj["base_quat"].clone().detach()
@@ -133,7 +133,7 @@ class MotionLib:
 
                 self.motion_base_rpy[start:end] = euler_from_quaternion(traj["base_quat"]).clone().detach()
 
-                rpy_unwrapped = self.motion_base_rpy.cpu().numpy()
+                rpy_unwrapped = self.motion_base_rpy.cpu().numpy() # 检测这些 2π 的跳变
                 rpy_unwrapped = np.unwrap(rpy_unwrapped, axis=0)
                 self.motion_global_ang_vel[start:end-1] = torch.tensor((rpy_unwrapped[start+1:end] - rpy_unwrapped[start:end-1]) * self.fps, dtype=torch.float, device=self.device)
                 self.motion_global_ang_vel[end-1:end] = self.motion_global_ang_vel[end-2:end-1]

@@ -1,12 +1,21 @@
 motions:
   pickUp:
-    - file: ../dataset/dataset_carrybox_adam/pickUp/pickup1.pt
+    # - file: ../dataset/dataset_carrybox_adam/pickUp/pickup1.pt
+    #   rsi_skipped_range: []
+    #   weight: 4.0
+    # - file: ../dataset/dataset_carrybox_adam/pickUp/pickup2.pt
+    #   rsi_skipped_range: []
+    #   weight: 4.0
+    # - file: ../dataset/dataset_carrybox_adam/pickUp/pickup3.pt
+    #   rsi_skipped_range: []
+    #   weight: 4.0
+    - file: ../dataset/dataset_carrybox_adam/pickUp/pickupB1.pt
       rsi_skipped_range: []
       weight: 4.0
-    - file: ../dataset/dataset_carrybox_adam/pickUp/pickup2.pt
+    - file: ../dataset/dataset_carrybox_adam/pickUp/pickupB1.pt
       rsi_skipped_range: []
       weight: 4.0
-    - file: ../dataset/dataset_carrybox_adam/pickUp/pickup3.pt
+    - file: ../dataset/dataset_carrybox_adam/pickUp/pickupB1.pt
       rsi_skipped_range: []
       weight: 4.0
 
@@ -31,13 +40,22 @@ motions:
     # - file: ../dataset/dataset_carrybox_adam/carryWith/push2.pt
     #   rsi_skipped_range: []
     #   weight: 5.0
-    - file: ../dataset/dataset_carrybox_adam/carryWith/carrywith1.pt
+    # - file: ../dataset/dataset_carrybox_adam/carryWith/carrywith1.pt
+    #   rsi_skipped_range: []
+    #   weight: 5.0
+    # - file: ../dataset/dataset_carrybox_adam/carryWith/carrywith2.pt
+    #   rsi_skipped_range: []
+    #   weight: 5.0
+    # - file: ../dataset/dataset_carrybox_adam/carryWith/carrywith3.pt
+    #   rsi_skipped_range: []
+    #   weight: 5.0
+    - file: ../dataset/dataset_carrybox_adam/carryWith/carrywithB.pt
       rsi_skipped_range: []
       weight: 5.0
-    - file: ../dataset/dataset_carrybox_adam/carryWith/carrywith2.pt
+    - file: ../dataset/dataset_carrybox_adam/carryWith/carrywithB2.pt
       rsi_skipped_range: []
-      weight: 5.0
-    - file: ../dataset/dataset_carrybox_adam/carryWith/carrywith3.pt
+      weight: 5.0    
+    - file: ../dataset/dataset_carrybox_adam/carryWith/carrywithB3.pt
       rsi_skipped_range: []
       weight: 5.0
 
