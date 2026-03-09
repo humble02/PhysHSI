@@ -318,7 +318,7 @@ class AdamCfg(LeggedRobotCfg):
 
     class amp:
         amp_coef = 0.25#0.25 # 这风格奖励系数可能还得调调
-        num_one_step_obs = 1 + 31 + 5 * 3 + 3 + 6 + 6
+        num_one_step_obs = 1 + 15 + 5 * 3 + 3 + 6 + 6
         window_length = 10
         num_obs = num_one_step_obs * window_length
         ratio_random_range = [0.95, 1.05]

@@ -814,12 +814,20 @@ class LeggedRobot(BaseTask):
             dof_upper = self.dof_pos_limits[:, 1].view(1, -1)
             dof_lower = self.dof_pos_limits[:, 0].view(1, -1)
             if self.cfg.domain_rand.randomize_initial_joint_pos:
-                init_dof_pos = dof_pos * torch_rand_float(self.cfg.domain_rand.initial_joint_pos_scale[0], self.cfg.domain_rand.initial_joint_pos_scale[1], (len(curr_env_ids), self.num_dof), device=self.device)
+                # init_dof_pos = dof_pos * torch_rand_float(self.cfg.domain_rand.initial_joint_pos_scale[0], self.cfg.domain_rand.initial_joint_pos_scale[1], (len(curr_env_ids), self.num_dof), device=self.device)
+                # init_dof_pos += torch_rand_float(self.cfg.domain_rand.initial_joint_pos_offset[0], self.cfg.domain_rand.initial_joint_pos_offset[1], (len(curr_env_ids), self.num_dof), device=self.device)
+                # self.dof_pos[curr_env_ids] = torch.clip(init_dof_pos, dof_lower, dof_upper)
+                init_dof_pos = self.default_dof_pos * torch_rand_float(self.cfg.domain_rand.initial_joint_pos_scale[0], self.cfg.domain_rand.initial_joint_pos_scale[1], (len(curr_env_ids), self.num_dof), device=self.device)
+                init_dof_pos[:,:15] = dof_pos * torch_rand_float(self.cfg.domain_rand.initial_joint_pos_scale[0], self.cfg.domain_rand.initial_joint_pos_scale[1], (len(curr_env_ids), 15), device=self.device)
                 init_dof_pos += torch_rand_float(self.cfg.domain_rand.initial_joint_pos_offset[0], self.cfg.domain_rand.initial_joint_pos_offset[1], (len(curr_env_ids), self.num_dof), device=self.device)
-                self.dof_pos[curr_env_ids] = torch.clip(init_dof_pos, dof_lower, dof_upper)
+                self.dof_pos[curr_env_ids] = torch.clip(init_dof_pos, dof_lower, dof_upper)            
             else:
-                self.dof_pos[curr_env_ids] = dof_pos * torch.ones((len(curr_env_ids), self.num_dof), device=self.device)
-            self.dof_vel[curr_env_ids] = dof_vel
+                # self.dof_pos[curr_env_ids] = dof_pos * torch.ones((len(curr_env_ids), self.num_dof), device=self.device)
+            # self.dof_vel[curr_env_ids] = dof_vel
+                self.dof_pos[curr_env_ids] = self.default_dof_pos * torch.ones((len(curr_env_ids), self.num_dof), device=self.device)
+                self.dof_pos[curr_env_ids, :15] = dof_pos * torch.ones((len(curr_env_ids), 15), device=self.device)
+                self.dof_vel[curr_env_ids] = 0.
+                self.dof_vel[curr_env_ids, :15] = dof_vel * torch.ones((len(curr_env_ids), 15), device=self.device)
 
             self._reset_ref_env_ids[sk_name] = curr_env_ids
             self._reset_ref_motion_ids[sk_name] = motion_ids
