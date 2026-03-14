@@ -155,11 +155,11 @@ class MotionLib:
 
         self.motion_base_lin_vel = torch_utils.quat_rotate_inverse(self.motion_base_quat, self.motion_global_lin_vel)
         self.motion_base_ang_vel = torch_utils.quat_rotate_inverse(self.motion_base_quat, self.motion_global_ang_vel)
-        self.motion_end_effector_pos[:, 0, :] = torch_utils.quat_rotate_inverse(self.motion_base_quat, self.motion_end_effector_pos[:, 0, :])
-        self.motion_end_effector_pos[:, 1, :] = torch_utils.quat_rotate_inverse(self.motion_base_quat, self.motion_end_effector_pos[:, 1, :])
-        self.motion_end_effector_pos[:, 2, :] = torch_utils.quat_rotate_inverse(self.motion_base_quat, self.motion_end_effector_pos[:, 2, :])
-        self.motion_end_effector_pos[:, 3, :] = torch_utils.quat_rotate_inverse(self.motion_base_quat, self.motion_end_effector_pos[:, 3, :])
-        self.motion_end_effector_pos[:, 4, :] = torch_utils.quat_rotate_inverse(self.motion_base_quat, self.motion_end_effector_pos[:, 4, :])
+        # self.motion_end_effector_pos[:, 0, :] = torch_utils.quat_rotate_inverse(self.motion_base_quat, self.motion_end_effector_pos[:, 0, :])
+        # self.motion_end_effector_pos[:, 1, :] = torch_utils.quat_rotate_inverse(self.motion_base_quat, self.motion_end_effector_pos[:, 1, :])
+        # self.motion_end_effector_pos[:, 2, :] = torch_utils.quat_rotate_inverse(self.motion_base_quat, self.motion_end_effector_pos[:, 2, :])
+        # self.motion_end_effector_pos[:, 3, :] = torch_utils.quat_rotate_inverse(self.motion_base_quat, self.motion_end_effector_pos[:, 3, :])
+        # self.motion_end_effector_pos[:, 4, :] = torch_utils.quat_rotate_inverse(self.motion_base_quat, self.motion_end_effector_pos[:, 4, :])
         self.motion_box_pos[:, :] = torch_utils.quat_rotate_inverse(self.motion_base_quat, self.motion_box_pos[:, :])
         
         mask = torch.norm(self.motion_box_pos[:, :2], dim=-1) > self.thresh_robot2object

@@ -261,11 +261,11 @@ class AdamCfg(LeggedRobotCfg):
         start_heading = 0.5
 
         # carryup
-        hand_pos = 1.5#0.7
+        hand_pos = 0.7
         hand_contact = 0.5
-        box_height = 4#2.0
-        box_contact_xy = 1.0
-        dual_hand_pos = 0.5
+        box_height = 2.0
+        box_contact_xy = 0.0
+        dual_hand_pos = 0.0
 
         # relocation
         relocation_heading = 0.5
